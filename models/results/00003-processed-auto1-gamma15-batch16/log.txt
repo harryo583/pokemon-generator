@@ -1,0 +1,58 @@
+Loading training set...
+
+Num images:  809
+Image shape: [3, 128, 128]
+Label shape: [0]
+
+Constructing networks...
+Traceback (most recent call last):
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/train.py", line 538, in <module>
+    main() # pylint: disable=no-value-for-parameter
+  File "/home/harryo583/projects/deeplearning/lib64/python3.9/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+  File "/home/harryo583/projects/deeplearning/lib64/python3.9/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+  File "/home/harryo583/projects/deeplearning/lib64/python3.9/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/home/harryo583/projects/deeplearning/lib64/python3.9/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File "/home/harryo583/projects/deeplearning/lib64/python3.9/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/train.py", line 531, in main
+    subprocess_fn(rank=0, args=args, temp_dir=temp_dir)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/train.py", line 383, in subprocess_fn
+    training_loop.training_loop(rank=rank, **args)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/training/training_loop.py", line 150, in training_loop
+    G = dnnlib.util.construct_class_by_name(**G_kwargs, **common_kwargs).train().requires_grad_(False).to(device) # subclass of torch.nn.Module
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/dnnlib/util.py", line 289, in construct_class_by_name
+    return call_func_by_name(*args, func_name=class_name, **kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/dnnlib/util.py", line 284, in call_func_by_name
+    return func_obj(*args, **kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/torch_utils/persistence.py", line 104, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/training/networks.py", line 493, in __init__
+    self.synthesis = SynthesisNetwork(w_dim=w_dim, img_resolution=img_resolution, img_channels=img_channels, **synthesis_kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/torch_utils/persistence.py", line 104, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/training/networks.py", line 450, in __init__
+    block = SynthesisBlock(in_channels, out_channels, w_dim=w_dim, resolution=res,
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/torch_utils/persistence.py", line 104, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/training/networks.py", line 366, in __init__
+    self.conv1 = SynthesisLayer(out_channels, out_channels, w_dim=w_dim, resolution=resolution,
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/torch_utils/persistence.py", line 104, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/training/networks.py", line 278, in __init__
+    self.affine = FullyConnectedLayer(w_dim, in_channels, bias_init=1)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/torch_utils/persistence.py", line 104, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/harryo583/projects/pokemon-generator/stylegan2/training/networks.py", line 101, in __init__
+    self.bias = torch.nn.Parameter(torch.full([out_features], np.float32(bias_init))) if bias else None
+TypeError: full(): argument 'fill_value' (position 2) must be Number, not numpy.float32
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/popen_fork.py", line 27, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+  File "/home/harryo583/projects/deeplearning/lib64/python3.9/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 584937) is killed by signal: Terminated. 
